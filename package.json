@@ -1,0 +1,26 @@
+{
+  "name": "manicure-medusa",
+  "version": "1.0.0",
+  "description": "Manicure service platform with medusa backend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run backend\" \"npm run storefront\"",
+    "backend": "cd backend && npx medusa develop",
+    "storefront": "cd storefront && npm run dev", 
+    "restart": "npm run stop && npm run dev",
+    "stop": "pkill -f \"medusa\\|next\\|react\"",
+    "build": "cd backend && npx medusa build && cd ../storefront && npm run build",
+    "backup:db": "node backup-db.js",
+    "restore:db": "node restore-db.js",
+    "backup:auto": "npm run backup:db && git add backups/db && git commit -m \"Auto backup: $(date)\" || true",
+    "git:push": "npm run backup:db && git add . && git commit -m \"Project update with DB backup\" && git push",
+    "git:setup": "git init && git add . && git commit -m \"Initial commit with project structure\""
+  },
+  "keywords": ["manicure", "medusa", "ecommerce"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.3.1"
+  }
+}
