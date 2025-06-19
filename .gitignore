@@ -1,1 +1,75 @@
-node_modules
+# Dependencies
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+backend/.env.test
+storefront/.env.local
+**/.env
+
+# Build outputs
+dist/
+build/
+.next/
+.medusa/
+backend/.medusa/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Medusa uploads
+uploads/
+**/uploads/
+backend/static/*
+!backend/static/.gitkeep
+
+# Database backups
+backups/db/
+backups/db/*.sql
+backups/db/*.dump
+
+# Temporary files
+tmp/
+temp/
+
+# Development tools
+.qodo/
+
+# Testing
+*.tgznode_modules
