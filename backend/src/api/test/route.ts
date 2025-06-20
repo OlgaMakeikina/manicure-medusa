@@ -9,41 +9,52 @@ export const GET = async (
     const productRequestModuleService = req.scope.resolve("product_request")
     const customerModuleService = req.scope.resolve("customer")
     
-    const customers = await customerModuleService.listCustomers({ email: "ivan@test.ru" })
-    const customer = customers[0]
+    console.log("🧪 API Status Check...")
     
-    if (!customer) {
-      return res.status(404).json({ error: "Customer not found" })
-    }
+    // 1. Проверяем существующих клиентов и мастеров
+    const customers = await customerModuleService.listCustomers()
+    const masters = await masterModuleService.listMasters()
+    const requests = await productRequestModuleService.listProductRequests()
     
-    const master = await masterModuleService.createMasters({
-      customer_id: customer.id,
-      license_number: `MST${Date.now()}`,
-      subscription_active: true,
-      specializations: ["manicure", "pedicure"],
-      work_address: "Moscow, Red Street, 10"
-    })
-    
-    const productRequest = await productRequestModuleService.createProductRequests({
-      client_id: customer.id,
-      master_id: master.id,
-      product_id: "prod_test_123",
-      status: "requested",
-      quantity: 2,
-      notes: "Red nail polish"
-    })
+    console.log(`✅ Found ${customers.length} customers, ${masters.length} masters, ${requests.length} requests`)
 
     res.json({
       success: true,
-      message: "Links working perfectly! Full chain created: Customer -> Master -> ProductRequest",
-      data: {
-        customer_id: customer.id,
-        master_id: master.id,
-        product_request_id: productRequest.id,
-        links_working: true
-      }
+      message: "🎯 API SERVER IS RUNNING!",
+      stats: {
+        customers_count: customers.length,
+        masters_count: masters.length,
+        requests_count: requests.length
+      },
+      test_endpoints: {
+        working: [
+          `✅ GET ${req.protocol}://${req.get('host')}/test`,
+          `🔧 GET ${req.protocol}://${req.get('host')}/store/products`,
+          `🔧 GET ${req.protocol}://${req.get('host')}/store/masters`,
+          `🔧 POST ${req.protocol}://${req.get('host')}/store/product-requests`
+        ]
+      },
+      sample_data: {
+        customer: customers[0] ? {
+          id: customers[0].id,
+          email: customers[0].email,
+          name: `${customers[0].first_name} ${customers[0].last_name}`
+        } : null,
+        master: masters[0] ? {
+          id: masters[0].id,
+          license: masters[0].license_number,
+          subscription: masters[0].subscription_active
+        } : null,
+        request: requests[0] ? {
+          id: requests[0].id,
+          status: requests[0].status,
+          notes: requests[0].notes
+        } : null
+      },
+      next_test: "curl http://localhost:9000/store/products"
     })
   } catch (error) {
+    console.error("❌ Test failed:", error)
     res.status(500).json({
       error: error.message
     })
