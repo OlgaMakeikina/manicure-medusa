@@ -1,0 +1,177 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 300;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.deliverySection, .paymentSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sectionTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999;
+  margin-bottom: 32px;
+}
+
+.contactGroup {
+  margin-bottom: 32px;
+}
+
+.contactGroup h3 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+.contactItem {
+  margin-bottom: 12px;
+}
+
+.contactItem p {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 300;
+  margin: 0;
+}
+
+.highlight {
+  color: #000 !important;
+  font-weight: 400 !important;
+}
+
+.badge {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 300;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.paymentMethods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.paymentMethod {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 300;
+}
+
+.subscriptionGroup {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 40px;
+  margin-bottom: 32px;
+}
+
+.subscriptionGroup h3 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+.subscriptionPrice {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.subscriptionFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.feature {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 60px 30px;
+  }
+  
+  .content {
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+  
+  .header {
+    margin-bottom: 80px;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 20px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .deliverySection, .paymentSection {
+    gap: 40px;
+  }
+  
+  .paymentMethods {
+    grid-template-columns: 1fr;
+  }
+}
