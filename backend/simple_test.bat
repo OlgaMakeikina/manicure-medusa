@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/json" -H "x-publishable-api-key: pk_8222f0fc611907b2d6ae8e29a9bd5de3b5170c42e639845f0a7178e3d8fc9684" -d "{\"email\":\"test2@example.com\",\"password\":\"123456\",\"first_name\":\"Тестовый пользователь\"}" http://localhost:9000/auth/test-register
